@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillGap AI - Resume Analyzer & Career Intelligence</title>
+    
+    <!-- FAVICON (Browser Tab Logo & Search Branding) -->
+    <!-- REPLACE THIS LINE IN <head>: -->
+       <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">  
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.90);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+        }
+        .btn-gradient {
+            background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);
+        }
+        .btn-gradient:hover {
+            background: linear-gradient(90deg, #4338ca 0%, #6d28d9 100%);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen text-slate-100 flex flex-col font-sans antialiased">
+
+    <!-- 1. HEADER / NAVBAR -->
+    <!-- 1. HEADER / NAVBAR -->
+<header class="w-full border-b border-slate-700/50 bg-slate-900/60 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            
+            <!-- 🔽 IS DIV DIBBE KO REPLACE KARNA HAI 🔽 -->
+              <div class="p-2 bg-indigo-600 rounded-lg text-white font-bold text-xl shadow-lg shadow-indigo-500/30 flex items-center justify-center">
+                <i class="fa-solid fa-layer-group"></i>
+              </div>
+            <!-- 🔼 IS DIV DIBBE KO REPLACE KARNA HAI 🔼 -->
+
+              <span class="font-extrabold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">
+                SkillGap AI
+               </span>
+               <span class="text-xs font-semibold px-2 py-0.5 rounded bg-indigo-950 text-indigo-300 border border-indigo-800 hidden sm:inline-block">
+                    Resume Analyzer
+                </span>
+            </div>
+            <nav class="hidden md:flex gap-8 text-sm font-medium text-slate-300">
+                <a href="#hero" class="hover:text-indigo-400 transition">Home</a>
+                <a href="#analyzer" class="hover:text-indigo-400 transition">Analyzer</a>
+                <a href="#about" class="hover:text-indigo-400 transition">How It Works</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. HERO SECTION -->
+    <section id="hero" class="py-12 px-4 text-center max-w-4xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-900/50 border border-indigo-700/50 text-indigo-300 text-xs font-medium mb-6">
+            <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            AI-Powered Career Intelligence Engine
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight mb-4 leading-tight">
+            AI-Driven Skill Gap Analysis & Resume Analyzer
+        </h1>
+        <p class="text-slate-300 text-base sm:text-lg mb-8 max-w-2xl mx-auto">
+            Select from 20+ Junior/Senior Tech Roles, upload your resume, and discover live skill gaps, active job openings, and actionable AI resume enhancement recommendations.
+        </p>
+        <div class="flex flex-wrap justify-center gap-3 mb-4">
+            <span class="px-4 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-slate-200 text-xs font-medium flex items-center gap-2">
+                <i class="fa-solid fa-bolt text-yellow-400"></i> Smart Analysis
+            </span>
+            <span class="px-4 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-slate-200 text-xs font-medium flex items-center gap-2">
+                <i class="fa-solid fa-chart-pie text-indigo-400"></i> Skill Gap Insights
+            </span>
+            <span class="px-4 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-slate-200 text-xs font-medium flex items-center gap-2">
+                <i class="fa-solid fa-briefcase text-emerald-400"></i> Live Job Matching
+            </span>
+        </div>
+    </section>
+
+    <!-- 3. DASHBOARD & CONTROLS -->
+    <main id="analyzer" class="max-w-5xl mx-auto px-4 pb-16 flex-1 w-full">
+        <div class="glass-card rounded-2xl p-6 sm:p-8 text-slate-800 shadow-2xl mb-8">
+            
+            <!-- STEP 1: TARGET JOB ROLE (20+ ROLES) -->
+            <div class="mb-6">
+                <label class="block text-sm font-bold text-slate-700 mb-2 flex items-center gap-2">
+                    <span class="flex items-center justify-center w-6 h-6 bg-indigo-600 text-white rounded-full text-xs">1</span>
+                    Select Target Job Role (22 Tech Roles Available)
+                </label>
+                <select id="roleSelect" class="w-full p-3 rounded-xl border border-slate-300 bg-white text-slate-800 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 shadow-sm transition">
+                    <optgroup label="📊 Data & AI Roles">
+                        <option value="Junior Data Analyst">Junior Data Analyst</option>
+                        <option value="Senior Data Analyst">Senior Data Analyst</option>
+                        <option value="Junior Data Scientist">Junior Data Scientist</option>
+                        <option value="Senior Data Scientist">Senior Data Scientist</option>
+                        <option value="AI / Machine Learning Engineer">AI / Machine Learning Engineer</option>
+                    </optgroup>
+                    <optgroup label="💻 Software & Web Development">
+                        <option value="Junior Frontend Developer">Junior Frontend Developer</option>
+                        <option value="Senior Frontend Developer">Senior Frontend Developer</option>
+                        <option value="Junior Backend Developer">Junior Backend Developer</option>
+                        <option value="Senior Backend Developer">Senior Backend Developer</option>
+                        <option value="Junior Python Developer">Junior Python Developer</option>
+                        <option value="Senior Python Engineer">Senior Python Engineer</option>
+                        <option value="Junior Full Stack Developer">Junior Full Stack Developer</option>
+                        <option value="Senior Full Stack Engineer">Senior Full Stack Engineer</option>
+                        <option value="Mobile App Developer (Flutter/React Native)">Mobile App Developer (Flutter/React Native)</option>
+                    </optgroup>
+                    <optgroup label="☁️ DevOps, Cloud & Cyber Security">
+                        <option value="DevOps Engineer">DevOps Engineer</option>
+                        <option value="Cloud Solutions Architect">Cloud Solutions Architect</option>
+                        <option value="Cyber Security Analyst">Cyber Security Analyst</option>
+                        <option value="System Administrator">System Administrator</option>
+                    </optgroup>
+                    <optgroup label="🛠️ QA, UI/UX & Management">
+                        <option value="Software QA / Automation Tester">Software QA / Automation Tester</option>
+                        <option value="UI/UX Designer">UI/UX Designer</option>
+                        <option value="Database Administrator (DBA)">Database Administrator (DBA)</option>
+                        <option value="Product Manager (Tech)">Product Manager (Tech)</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <!-- STEP 2: RESUME UPLOAD -->
+            <div class="mb-6">
+                <label class="block text-sm font-bold text-slate-700 mb-2 flex items-center gap-2">
+                    <span class="flex items-center justify-center w-6 h-6 bg-indigo-600 text-white rounded-full text-xs">2</span>
+                    Upload Resume (PDF format)
+                </label>
+                <div id="dropZone" class="border-2 border-dashed border-indigo-300 rounded-xl p-8 text-center bg-indigo-50/50 hover:bg-indigo-50 transition cursor-pointer relative">
+                    <input type="file" id="resumeInput" accept=".pdf" class="hidden">
+                    <div id="uploadPrompt" class="flex flex-col items-center">
+                        <i class="fa-solid fa-cloud-arrow-up text-4xl text-indigo-500 mb-3"></i>
+                        <p class="text-sm font-semibold text-slate-700">Drag & Drop your resume PDF here, or <span class="text-indigo-600 underline">Browse</span></p>
+                        <p class="text-xs text-slate-400 mt-1">Supports PDF files up to 10MB limit</p>
+                    </div>
+                    <div id="fileInfo" class="hidden flex items-center justify-center gap-3 text-indigo-700 font-semibold text-sm">
+                        <i class="fa-solid fa-file-pdf text-2xl text-red-500"></i>
+                        <span id="fileName">resume.pdf</span>
+                        <button type="button" id="removeFileBtn" class="text-xs text-slate-400 hover:text-red-500 ml-2">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA BUTTON -->
+            <button id="analyzeBtn" onclick="processResume()" class="w-full py-4 rounded-xl text-white font-bold text-base btn-gradient shadow-lg shadow-indigo-500/30 transition transform active:scale-98 flex items-center justify-center gap-2">
+                <span>✨ Analyze Resume & Find Skill Gaps</span>
+            </button>
+
+            <!-- PRIVACY NOTE -->
+            <p class="text-xs text-center text-slate-500 mt-4 flex items-center justify-center gap-1">
+                <span>🔒 Your data is secure and private. Files are processed transiently without storage.</span>
+            </p>
+        </div>
+
+        <!-- LOADING INDICATOR -->
+        <div id="loadingSpinner" class="hidden glass-card rounded-2xl p-8 text-center text-slate-800 shadow-xl mb-8">
+            <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-indigo-600 border-t-transparent mb-4"></div>
+            <p class="font-bold text-indigo-900 text-lg">Analyzing Resume with spaCy NLP Engine...</p>
+            <p class="text-xs text-slate-500 mt-1">Extracting tokens, computing match scores, and fetching job platforms.</p>
+        </div>
+
+        <!-- 4. RESULTS & VISUAL ANALYTICS DASHBOARD -->
+        <div id="resultsDashboard" class="hidden space-y-8">
+            <div class="glass-card rounded-2xl p-6 sm:p-8 text-slate-800 shadow-2xl">
+                <h2 class="text-2xl font-black text-slate-900 mb-6 flex items-center gap-2 border-b border-slate-200 pb-3">
+                    <i class="fa-solid fa-chart-simple text-indigo-600"></i> Skill Match & Gap Analysis
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center mb-6">
+                    <!-- CIRCULAR CHART -->
+                    <div class="flex flex-col items-center justify-center bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                        <div class="w-44 h-44 relative">
+                            <canvas id="matchChart"></canvas>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                                <span id="scoreText" class="text-3xl font-black text-indigo-600">0%</span>
+                                <span id="matchLabel" class="text-xs font-bold text-slate-500">Match</span>
+                            </div>
+                        </div>
+                        <span id="matchVerdict" class="mt-4 px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700">
+                            Calculating...
+                        </span>
+                    </div>
+
+                    <!-- MATCHED & MISSING STATS -->
+                    <div class="md:col-span-2 space-y-4">
+                        <!-- MATCHED SKILLS -->
+                        <div class="bg-emerald-50/80 border border-emerald-200 rounded-xl p-5">
+                            <h3 class="text-sm font-bold text-emerald-800 mb-3 flex items-center gap-2">
+                                <i class="fa-solid fa-circle-check text-emerald-600"></i> Matched Skills Found in Resume
+                            </h3>
+                            <div id="matchedPills" class="flex flex-wrap gap-2"></div>
+                        </div>
+
+                        <!-- MISSING SKILLS & COURSES -->
+                        <div class="bg-rose-50/80 border border-rose-200 rounded-xl p-5">
+                            <h3 class="text-sm font-bold text-rose-800 mb-3 flex items-center gap-2">
+                                <i class="fa-solid fa-triangle-exclamation text-rose-600"></i> Skill Gaps & Recommended Courses
+                            </h3>
+                            <ul id="missingList" class="space-y-2 text-sm"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LIVE JOB SEARCH PLATFORMS -->
+                <div class="bg-indigo-50/80 border border-indigo-200 rounded-xl p-5 mt-6">
+                    <h3 class="text-sm font-bold text-indigo-900 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-briefcase text-indigo-600"></i> Where Are These Jobs Available? (Live Search)
+                    </h3>
+                    <p class="text-xs text-slate-600 mb-3">Find current job openings for <span id="jobRoleTitle" class="font-bold text-indigo-700">Target Role</span> on major platforms:</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <a id="linkLinkedin" href="#" target="_blank" class="flex items-center justify-center gap-2 p-2.5 bg-white border border-slate-200 rounded-lg hover:border-blue-500 hover:text-blue-600 font-semibold text-xs text-slate-700 transition shadow-sm">
+                            <i class="fa-brands fa-linkedin text-blue-600 text-sm"></i> LinkedIn Jobs ↗
+                        </a>
+                        <a id="linkIndeed" href="#" target="_blank" class="flex items-center justify-center gap-2 p-2.5 bg-white border border-slate-200 rounded-lg hover:border-blue-600 hover:text-blue-700 font-semibold text-xs text-slate-700 transition shadow-sm">
+                            <i class="fa-solid fa-magnifying-glass text-blue-700 text-sm"></i> Indeed Jobs ↗
+                        </a>
+                        <a id="linkNaukri" href="#" target="_blank" class="flex items-center justify-center gap-2 p-2.5 bg-white border border-slate-200 rounded-lg hover:border-sky-500 hover:text-sky-600 font-semibold text-xs text-slate-700 transition shadow-sm">
+                            <i class="fa-solid fa-building text-sky-600 text-sm"></i> Naukri.com ↗
+                        </a>
+                        <a id="linkGlassdoor" href="#" target="_blank" class="flex items-center justify-center gap-2 p-2.5 bg-white border border-slate-200 rounded-lg hover:border-emerald-500 hover:text-emerald-600 font-semibold text-xs text-slate-700 transition shadow-sm">
+                            <i class="fa-solid fa-door-open text-emerald-600 text-sm"></i> Glassdoor ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- RESUME ENHANCEMENT SUGGESTIONS -->
+                <div class="bg-amber-50/80 border border-amber-200 rounded-xl p-5 mt-6">
+                    <h3 class="text-sm font-bold text-amber-900 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb text-amber-600"></i> AI Resume Enhancement Recommendations
+                    </h3>
+                    <ul id="resumeTipsList" class="space-y-2 text-xs text-slate-700"></ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 5. FOOTER WITH ALL GROUP PARTNERS -->
+    <footer class="w-full border-t border-slate-800 bg-slate-950/80 py-6 px-4 mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+            <p class="flex items-center gap-1">
+                Made with passion for smart careers <i class="fa-solid fa-heart text-rose-500"></i>
+            </p>
+            <p>© 2026 SkillGap AI. All rights reserved.</p>
+            <div class="text-center sm:text-right">
+                <p class="font-semibold text-indigo-400">
+                    Developed by: Dikshita Marathe,Kashish Jadhav & Prachi Patil
+                </p>
+                <p class="text-[10px] text-slate-500">Diploma Final Year Capstone Project</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS LOGIC -->
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('resumeInput');
+        const uploadPrompt = document.getElementById('uploadPrompt');
+        const fileInfo = document.getElementById('fileInfo');
+        const fileNameDisplay = document.getElementById('fileName');
+        const removeFileBtn = document.getElementById('removeFileBtn');
+        let selectedFile = null;
+        let chartInstance = null;
+
+        dropZone.addEventListener('click', () => fileInput.click());
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('bg-indigo-100');
+        });
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('bg-indigo-100'));
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('bg-indigo-100');
+            if (e.dataTransfer.files.length > 0) {
+                handleFileSelect(e.dataTransfer.files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFileSelect(e.target.files[0]);
+            }
+        });
+
+        removeFileBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            selectedFile = null;
+            fileInput.value = '';
+            fileInfo.classList.add('hidden');
+            uploadPrompt.classList.remove('hidden');
+        });
+
+        function handleFileSelect(file) {
+            if (file.type !== 'application/pdf') {
+                alert('Please upload a PDF file only.');
+                return;
+            }
+            if (file.size > 10 * 1024 * 1024) {
+                alert('File size exceeds 10MB limit.');
+                return;
+            }
+            selectedFile = file;
+            fileNameDisplay.textContent = file.name;
+            uploadPrompt.classList.add('hidden');
+            fileInfo.classList.remove('hidden');
+        }
+
+        async function processResume() {
+            if (!selectedFile) {
+                alert('Please select or drag a resume PDF first.');
+                return;
+            }
+
+            const role = document.getElementById('roleSelect').value;
+            const formData = new FormData();
+            formData.append('file', selectedFile);
+            formData.append('role', role);
+
+            document.getElementById('loadingSpinner').classList.remove('hidden');
+            document.getElementById('resultsDashboard').classList.add('hidden');
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/analyze', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                document.getElementById('loadingSpinner').classList.add('hidden');
+
+                if (!response.ok) {
+                    alert(data.error || 'Failed to analyze resume.');
+                    return;
+                }
+
+                displayResults(data);
+
+            } catch (err) {
+                document.getElementById('loadingSpinner').classList.add('hidden');
+                alert('Backend Server is offline. Please run "python backend/app.py" in VS Code terminal!');
+            }
+        }
+
+        function displayResults(data) {
+            document.getElementById('resultsDashboard').classList.remove('hidden');
+
+            // 1. Score & Verdict
+            const score = data.match_score;
+            document.getElementById('scoreText').textContent = score + '%';
+            
+            const verdictLabel = document.getElementById('matchVerdict');
+            if (score >= 75) {
+                verdictLabel.textContent = '🌟 Excellent Fit';
+                verdictLabel.className = 'mt-4 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800';
+            } else if (score >= 50) {
+                verdictLabel.textContent = '👍 Moderate Match';
+                verdictLabel.className = 'mt-4 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800';
+            } else {
+                verdictLabel.textContent = '⚠️ Low Match - Needs Skill Upgrade';
+                verdictLabel.className = 'mt-4 px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800';
+            }
+
+            // 2. Render Donut Chart
+            renderChart(score);
+
+            // 3. Render Matched Pills
+            const matchedContainer = document.getElementById('matchedPills');
+            matchedContainer.innerHTML = '';
+            if (data.matched_skills.length === 0) {
+                matchedContainer.innerHTML = '<span class="text-xs text-slate-500 italic">No direct matching skills found for this role.</span>';
+            } else {
+                data.matched_skills.forEach(skill => {
+                    const pill = document.createElement('span');
+                    pill.className = 'px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold flex items-center gap-1 border border-emerald-300';
+                    pill.innerHTML = `<i class="fa-solid fa-check text-emerald-600"></i> ${skill}`;
+                    matchedContainer.appendChild(pill);
+                });
+            }
+
+            // 4. Render Missing Skills List
+            const missingContainer = document.getElementById('missingList');
+            missingContainer.innerHTML = '';
+            if (data.missing_skills.length === 0) {
+                missingContainer.innerHTML = '<li class="text-xs text-emerald-700 font-bold">Great job! You possess all required skills for this role.</li>';
+            } else {
+                data.missing_skills.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = 'flex items-center justify-between bg-white px-3 py-2 rounded-lg border border-rose-200 text-xs';
+                    li.innerHTML = `
+                        <span class="font-bold text-slate-700 flex items-center gap-1.5">
+                            <i class="fa-solid fa-xmark text-rose-500"></i> ${item.name}
+                        </span>
+                        <a href="${item.learn_link}" target="_blank" class="px-2.5 py-1 rounded bg-indigo-600 hover:bg-indigo-700 text-white font-bold transition flex items-center gap-1 text-[11px]">
+                            Learn <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                        </a>
+                    `;
+                    missingContainer.appendChild(li);
+                });
+            }
+
+            // 5. Render Live Job Search Links
+            document.getElementById('jobRoleTitle').textContent = data.target_role;
+            document.getElementById('linkLinkedin').href = data.job_links.linkedin;
+            document.getElementById('linkIndeed').href = data.job_links.indeed;
+            document.getElementById('linkNaukri').href = data.job_links.naukri;
+            document.getElementById('linkGlassdoor').href = data.job_links.glassdoor;
+
+            // 6. Render AI Resume Recommendations
+            const tipsContainer = document.getElementById('resumeTipsList');
+            tipsContainer.innerHTML = '';
+            data.resume_tips.forEach(tip => {
+                const li = document.createElement('li');
+                li.className = 'bg-white p-2.5 rounded-lg border border-amber-200 flex items-start gap-2 shadow-sm';
+                li.innerHTML = `<i class="fa-solid fa-check text-amber-600 mt-0.5"></i> <span>${tip}</span>`;
+                tipsContainer.appendChild(li);
+            });
+
+            document.getElementById('resultsDashboard').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function renderChart(score) {
+            const ctx = document.getElementById('matchChart').getContext('2d');
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+            chartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [score, 100 - score],
+                        backgroundColor: ['#4f46e5', '#e2e8f0'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    cutout: '80%',
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: { tooltip: { enabled: false } }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
