@@ -6,7 +6,7 @@ from analyzer import analyze_resume, extract_text_from_pdf
 app = Flask(__name__)
 
 # Enable CORS for cross-origin requests from Frontend
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Upload directory configuration
 UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'uploads')
