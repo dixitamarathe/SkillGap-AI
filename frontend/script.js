@@ -2,7 +2,7 @@
 "use strict";
 
 // Local development API. We will configure the live API during deployment.
-const API_URL = "http://127.0.0.1:5000/api/analyze";
+const API_URL = "https://skillgap-ai-api.onrender.com/api/analyze";
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 
 const form = document.getElementById("analyzeForm");
