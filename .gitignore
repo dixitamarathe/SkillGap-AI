@@ -1,0 +1,19 @@
+@'
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+.env
+.env.*
+!.env.example
+
+.vscode/
+.DS_Store
+Thumbs.db
+.vercel/
+'@ | Set-Content -Encoding utf8 .gitignore

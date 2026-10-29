@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Analyze your resume against your target role, discover matching skills and explore learning resources with SkillGap AI.">
+  <title>SkillGap AI — Resume & Skill Analyzer</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <header class="navbar" id="home">
+    <a class="brand" href="#home" aria-label="SkillGap AI home">
+      <span class="brand-symbol">✳</span>
+      <span>SkillGap <span class="brand-ai">AI</span></span>
+    </a>
+
+    <button class="mobile-menu" id="mobileMenu"
+      aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#benefits">About</a>
+      <a href="#benefits">Features</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a href="#analyzer" class="nav-cta">Analyze resume <span>↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="live-dot"></span> A CLEARER WAY TO YOUR NEXT ROLE</div>
+
+        <h1>Know your skills.<br>Discover your <span class="gradient-text">next move.</span></h1>
+
+        <p class="hero-description">
+          See how your resume aligns with your target job role.
+          Discover the skills detected in your resume and explore
+          learning resources for your next career step.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#analyzer" class="primary-button">Analyze my resume <span>→</span></a>
+          <a href="#how-it-works" class="text-link">How it works <span>↗</span></a>
+        </div>
+
+        <div class="trust-line">
+          <span>✓</span> PDF resume support
+          <i></i>
+          <span>✓</span> Role-based insights
+          <i></i>
+          <span>✓</span> Learning resources
+        </div>
+      </div>
+
+      <div class="hero-art" aria-label="Illustration of resume analysis results">
+        <div class="art-orbit orbit-a"></div>
+        <div class="art-orbit orbit-b"></div>
+
+        <div class="preview-panel resume-panel">
+          <div class="preview-top">
+            <span class="file-icon">PDF</span>
+            <span>RESUME SNAPSHOT</span>
+            <span class="preview-menu">•••</span>
+          </div>
+          <div class="profile-row">
+            <div class="profile-avatar">JD</div>
+            <div><div class="skeleton skeleton-name"></div><div class="skeleton skeleton-small"></div></div>
+          </div>
+          <div class="preview-section-title">Skills &amp; experience</div>
+          <div class="skeleton skeleton-long"></div>
+          <div class="skeleton skeleton-medium"></div>
+          <div class="skeleton skeleton-long"></div>
+          <div class="sample-pills"><span>Python</span><span>SQL</span><span>Projects</span></div>
+        </div>
+
+        <div class="preview-panel match-panel">
+          <span class="preview-caption">SKILL ALIGNMENT</span>
+          <div class="preview-ring">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <circle cx="60" cy="60" r="44" fill="none" stroke="#e5e7eb" stroke-width="10"/>
+              <circle cx="60" cy="60" r="44" fill="none" stroke="#8b7cf6" stroke-width="10"
+                stroke-linecap="round" stroke-dasharray="184 277" transform="rotate(-90 60 60)"/>
+            </svg>
+            <div class="ring-label"><strong>66%</strong><span>illustration</span></div>
+          </div>
+          <div class="mini-success">✦ A clearer view of your skills</div>
+        </div>
+
+        <div class="art-tag tag-one">✳ Skill insights</div>
+        <div class="art-tag tag-two">↗ Keep learning</div>
+      </div>
+    </section>
+
+    <section class="benefits container" id="benefits">
+      <article class="benefit">
+        <span class="benefit-icon lavender">◎</span>
+        <div><h3>Role-based matching</h3><p>Compare against a selected skill list.</p></div>
+      </article>
+      <article class="benefit">
+        <span class="benefit-icon mint">⌁</span>
+        <div><h3>Clear skill insights</h3><p>See which keywords were detected.</p></div>
+      </article>
+      <article class="benefit">
+        <span class="benefit-icon peach">↗</span>
+        <div><h3>Learning resources</h3><p>Explore ways to build relevant skills.</p></div>
+      </article>
+    </section>
+
+    <section class="analyzer-section container" id="analyzer">
+      <div class="section-heading">
+        <span class="eyebrow centered-eyebrow">YOUR NEXT STEP STARTS HERE</span>
+        <h2>Let's look at your <span class="gradient-text">skill alignment.</span></h2>
+        <p>Select a target role and upload your resume to get started.</p>
+      </div>
+
+      <div class="analyzer-card">
+        <div class="form-heading">
+          <div class="form-heading-icon">✳</div>
+          <div>
+            <h3>Analyze your resume</h3>
+            <p>It only takes a few steps.</p>
+          </div>
+        </div>
+
+        <form id="analyzeForm">
+          <div class="field-group">
+            <label for="jobRole">What role are you targeting?</label>
+            <select id="jobRole" name="job_role" required>
+              <option value="">Choose a job role</option>
+              <option value="Data Analyst">Data Analyst</option>
+              <option value="Frontend Developer">Frontend Developer</option>
+              <option value="Backend Developer">Backend Developer</option>
+              <option value="Python Engineer">Python Engineer</option>
+              <option value="Full Stack Developer">Full Stack Developer</option>
+              <option value="Data Scientist">Data Scientist</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="resumeFile">Your resume</label>
+            <label class="upload-zone" id="dropZone" for="resumeFile">
+              <input type="file" id="resumeFile" name="resume"
+                accept=".pdf,application/pdf" required>
+              <span class="upload-symbol">↑</span>
+              <strong id="uploadTitle">Drop your resume here</strong>
+              <span id="uploadSubtitle">or <span class="browse-link">browse files</span></span>
+              <span class="upload-limit">PDF only · Maximum file size 10 MB</span>
+            </label>
+            <p class="field-help">Use a text-based PDF. Scanned image-only PDFs may not be readable.</p>
+          </div>
+
+          <div class="privacy-note">
+            <span class="privacy-icon">🔒</span>
+            <div>
+              <strong>Your resume is processed temporarily</strong>
+              <p>The local backend deletes its temporary PDF after processing. Avoid uploading sensitive information you don't need for this analysis.</p>
+            </div>
+          </div>
+
+          <button type="submit" class="analyze-button" id="analyzeButton">
+            <span id="buttonText">✨ Analyze Resume &amp; Find Skill Gaps</span>
+            <span id="buttonArrow">→</span>
+          </button>
+
+          <p class="status-message" id="statusMessage" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="results-section container" id="resultsSection" hidden>
+      <div class="results-heading">
+        <div>
+          <span class="eyebrow">YOUR RESULTS</span>
+          <h2>Your skills at a <span class="gradient-text">glance.</span></h2>
+          <p id="resultsSubtitle">Analysis for your selected role.</p>
+        </div>
+        <button type="button" class="reset-button" id="analyzeAnother">← Analyze another resume</button>
+      </div>
+
+      <div class="results-dashboard">
+        <article class="result-card score-card">
+          <div class="result-card-heading">
+            <div><span class="card-label">SKILL ALIGNMENT</span><h3>Overall match</h3></div>
+            <span class="card-symbol">◉</span>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="skillChart" role="img" aria-label="Matched and missing skills chart"></canvas>
+            <div class="chart-center"><strong id="matchPercentage">0%</strong><span>skill match</span></div>
+          </div>
+          <p class="chart-caption">Based on the role's predefined skill list.</p>
+          <div class="chart-legend">
+            <span><i class="dot matched-dot"></i>Matched</span>
+            <span><i class="dot missing-dot"></i>Not detected</span>
+          </div>
+        </article>
+
+        <article class="result-card">
+          <div class="result-card-heading">
+            <div><span class="card-label">DETECTED IN YOUR RESUME</span><h3>Matched skills</h3></div>
+            <span class="count-badge" id="matchedCount">0</span>
+          </div>
+          <p class="result-description">Skills from the selected list that were found in the extracted text.</p>
+          <div id="matchedSkills" class="skill-pills"></div>
+        </article>
+
+        <article class="result-card">
+          <div class="result-card-heading">
+            <div><span class="card-label">POSSIBLE NEXT STEPS</span><h3>Skills to explore</h3></div>
+            <span class="count-badge missing-count" id="missingCount">0</span>
+          </div>
+          <p class="result-description">These keywords were not detected. Review the resources and decide which skills are relevant to your goals.</p>
+          <div id="missingSkills" class="missing-list"></div>
+        </article>
+      </div>
+
+      <div class="results-disclaimer">
+        <span>ⓘ</span>
+        <p id="analysisNotice">This is a keyword-based estimate, not a complete measure of professional ability. A missing keyword does not necessarily mean you lack that skill.</p>
+      </div>
+    </section>
+
+    <section class="how-section container" id="how-it-works">
+      <div class="section-heading">
+        <span class="eyebrow centered-eyebrow">SIMPLE BY DESIGN</span>
+        <h2>From resume to <span class="gradient-text">next steps.</span></h2>
+        <p>A straightforward way to explore how your resume aligns with a target role.</p>
+      </div>
+      <div class="steps-grid">
+        <article class="step-card"><span class="step-number">01</span><h3>Choose your role</h3><p>Select the job role you want to work towards.</p></article>
+        <article class="step-card"><span class="step-number">02</span><h3>Upload your resume</h3><p>Readable PDF text is extracted for comparison.</p></article>
+        <article class="step-card"><span class="step-number">03</span><h3>Explore your results</h3><p>Review detected skills and useful learning resources.</p></article>
+      </div>
+    </section>
+
+    <section class="closing-section container">
+      <div class="closing-card">
+        <div><span class="closing-kicker">YOUR NEXT CHAPTER</span><h2>Every next step starts with <span>clarity.</span></h2><p>Explore your resume and make your learning plan more intentional.</p></div>
+        <a href="#analyzer" class="closing-button">Analyze my resume ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="footer-inner container">
+      <a class="brand" href="#home"><span class="brand-symbol">✳</span><span>SkillGap <span class="brand-ai">AI</span></span></a>
+      <p class="footer-tagline">Understand your skills. Find your next step.</p>
+      <div class="footer-bottom">
+        <span>© <span id="currentYear"></span> SkillGap AI</span>
+        <a href="#home">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
